@@ -1,0 +1,25 @@
+<?= $form->field($model, 'id_miembro')->dropDownList(
+          ArrayHelper::map(Miembro::find()->all(),'id','nombre'),
+          ['prompt'=>'select Miembro']
+    )?>
+<?= $form->field($model, 'id_miembro')->textInput() ?>
+
+            
+            
+<?= $form->field($model, 'file')->fileInput(); ?>
+
+
+            $imageName = $model->comprobante;
+            $model->file = UploadedFile::getInstance($model,'file');
+            $model->file->saveAs( 'uploads/'.$imageName.'.'.$model->file->extension );
+
+            $model->logo = 'uploads/'.$imageName.'.'.$model->file->extension;
+
+
+
+
+            [['file'],'file'],
+
+            public $file;
+
+<?= $form->field($model, 'comprobante')->textInput(['maxlength' => true]) ?>
